@@ -1,0 +1,23 @@
+name: circulegapp
+description: A new Flutter application.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2
+  animator: ^1.0.0+1
+  material_design_icons_flutter: ^3.2.3895
+  shared_preferences: ^0.5.4+3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+flutter:
+  uses-material-design: true
