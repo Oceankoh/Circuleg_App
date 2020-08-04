@@ -13,7 +13,7 @@ class App extends StatelessWidget {
           title: TextStyle(fontSize: 25),
           subhead: TextStyle(fontSize: 20),
           caption: TextStyle(fontSize: 17,),
-          body1: TextStyle(fontSize: 15),
+          body1: TextStyle(fontSize: 20,),
           button: TextStyle(fontSize: 17),
         ),
       ),
