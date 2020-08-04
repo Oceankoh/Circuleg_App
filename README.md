@@ -1,16 +1,29 @@
-# circulegapp
-
-A new Flutter application.
+# Circuleg App
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a written in Flutter. Details are outlined below.
 
-A few resources to get you started if this is your first Flutter project:
+### `flutter --version`
+```
+Flutter 1.13.5 • channel unknown • unknown source
+Framework • revision 41a911099b (8 months ago) • 2019-12-19 13:48:02 -0800
+Engine • revision 0f90e6546b
+Tools • Dart 2.8.0 (build 2.8.0-dev.0.0 aa6709974d)
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Other info 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+flutter doctor
+
+[✓] Flutter (Channel unknown, v1.13.5, on Linux, locale en_US.UTF-8)
+[!] Android toolchain - develop for Android devices (Android SDK version 29.0.3)
+    ✗ Android license status unknown.
+      Try re-installing or updating your Android SDK Manager.
+      See https://developer.android.com/studio/#downloads or visit
+      https://flutter.dev/setup/#android-setup for detailed instructions.
+[✓] Android Studio (version 4.0)
+```
+
+
