@@ -22,10 +22,7 @@ class MainPageState extends State<MainPage> {
           Center(
             child: Text(
               "Blood Flow Level:" + result,
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .body1,
+              style: Theme.of(context).textTheme.body1,
               textAlign: TextAlign.center,
             ),
           ),
@@ -36,10 +33,11 @@ class MainPageState extends State<MainPage> {
   }
 
   void update() async {
-    btCtrl.getValue().then((pt) {
-      setState(() {
-        result = pt.infraRed.toString();
-      });
-    });
+//    btCtrl.getValue().then((pt) {
+//      setState(() {
+//        result = pt.infraRed.toString();
+//      });
+//    });
+    btCtrl.test();
   }
 }
