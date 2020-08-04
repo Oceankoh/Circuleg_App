@@ -9,7 +9,8 @@ class BTcontroller{
 //      print("connected: ");
 //      print(list);
 //    });
-    
+  //TODO follow this tutorial https://medium.com/@pietrowicz.eric/bluetooth-low-energy-development-with-flutter-and-circuitpython-c7a25eafd3cf
+
   }
   Future<point> getValue() async {
     int timestamp = DateTime.now().millisecondsSinceEpoch;
