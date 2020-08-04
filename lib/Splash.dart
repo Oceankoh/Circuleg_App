@@ -1,4 +1,4 @@
-import 'package:circulegapp/main.dart';
+import 'package:circulegapp/MainPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:circulegapp/Globals.dart';
