@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "128551523660",
+    "firebase_url": "https://techblazer-circuleg.firebaseio.com",
+    "project_id": "techblazer-circuleg",
+    "storage_bucket": "techblazer-circuleg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128551523660:android:4d9a5afbcfd0a92193abe9",
+        "android_client_info": {
+          "package_name": "com.ocean.circulegapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "128551523660-segt4slrj189ponv79n0asdqi0lihd6k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7fT9sztfEtJFXpnXLwqUM__VGJPf8w3A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "128551523660-segt4slrj189ponv79n0asdqi0lihd6k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

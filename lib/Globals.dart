@@ -3,10 +3,10 @@ class DeviceSpecs{
   static double screenWidth;
 }
 
-class point{
+class Point{
 
   int timestamp;
   int infraRed;
 
-  point(this.timestamp, this.infraRed);
+  Point(this.timestamp, this.infraRed);
 }

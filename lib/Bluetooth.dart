@@ -1,4 +1,4 @@
- import 'package:circulegapp/Globals.dart';
+import 'package:circulegapp/Globals.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 
 class BTcontroller{
@@ -12,9 +12,9 @@ class BTcontroller{
   //TODO follow this tutorial https://medium.com/@pietrowicz.eric/bluetooth-low-energy-development-with-flutter-and-circuitpython-c7a25eafd3cf
 
   }
-  Future<point> getValue() async {
+  Future<Point> getValue() async {
     int timestamp = DateTime.now().millisecondsSinceEpoch;
     int ir;//read bt
-    return point(timestamp, ir);
+    return Point(timestamp, ir);
   }
  }

@@ -14,6 +14,8 @@ dependencies:
   material_design_icons_flutter: ^3.2.3895
   shared_preferences: ^0.5.4+3
   flutter_blue: ^0.7.2
+  charts_flutter: ^0.9.0
+  cloud_firestore: ^0.13.7
 
 dev_dependencies:
   flutter_test:
