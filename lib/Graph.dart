@@ -20,7 +20,7 @@ class _GraphState extends State<Graph> {
       q.documents.forEach((d) => d.data['a'].forEach((k, v) {
             DateTime _now = DateTime.now();
             DateTime _dt =
-                DateTime.fromMillisecondsSinceEpoch(int.parse(k)*1000); //TODO: Remove *1000
+                DateTime.fromMillisecondsSinceEpoch(int.parse(k));
             if (_dt.year == _now.year &&
                 _dt.month == _now.month &&
                 _dt.day == _now.day) _readings.add(Point(int.parse(k), v));
@@ -51,7 +51,7 @@ class _GraphState extends State<Graph> {
       Series(
         id: 'IR Readings',
         domainFn: (r, _) =>
-            DateTime.fromMillisecondsSinceEpoch(r.timestamp * 1000),
+            DateTime.fromMillisecondsSinceEpoch(r.timestamp),
         measureFn: (r, _) => r.infraRed,
         seriesColor: Color.fromHex(code:"FF0000FF"),
         data: _readings,

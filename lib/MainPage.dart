@@ -3,6 +3,7 @@ import 'package:circulegapp/Globals.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:circulegapp/Graph.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 
 import 'Bluetooth.dart';
@@ -16,6 +17,7 @@ class MainPage extends StatefulWidget {
 }
 
 class MainPageState extends State<MainPage> {
+  Firestore _db = Firestore.instance;
   String _result = "Awaiting data";
   BluetoothController _btCtrl = BluetoothController();
 
@@ -68,10 +70,10 @@ class MainPageState extends State<MainPage> {
       String received = String.fromCharCodes(data);
       print(received);
       // if input is a number
-      if (double.tryParse(received) != null) {
-        setState(() {
-          _result = received;
-        });
+      if (int.tryParse(received) != null) {
+        setState(() => _result = received);  
+        DateTime _now = DateTime.now();      
+        _db.collection("T0000000A").document("${_now.year}-${_now.month}-${_now.day}-${_now.hour}").setData({"dt":_now,"a":{"${_now.millisecondsSinceEpoch}":int.parse(_result)}},merge:true);
       }
     });
   }

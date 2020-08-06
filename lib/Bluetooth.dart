@@ -41,17 +41,16 @@ class BluetoothController {
       }
     }
 
-    //why is this here? does not seem to be running?
-    /*_bluetooth.startDiscovery().listen((r) async {
+    _bluetooth.startDiscovery().listen((r) async {
       if (_isESP32(r.device)){
         if(r.device.bondState == BluetoothBondState.bonded || await _bluetooth.bondDeviceAtAddress(r.device.address)){
           connection = await BluetoothConnection.toAddress(r.device.address);
           print("Connected to ${r.device.name}");
           _bluetooth.cancelDiscovery();
-          return;
+          return connection;
         }
       }
-    });*/
+    });
   }
 
   //TODO: Call during dispose
