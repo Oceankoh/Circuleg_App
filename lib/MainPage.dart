@@ -3,6 +3,7 @@ import 'package:circulegapp/Globals.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:circulegapp/Graph.dart';
+import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -35,6 +36,10 @@ class MainPageState extends State<MainPage> {
 
   void _checkBT() async{
     _btCtrl.enableBluetooth();
-    _btCtrl.connectESP32();
+    BluetoothConnection btConn= await _btCtrl.connectESP32();
+    btConn.input.listen((data){
+      String recv = String.fromCharCodes(data);
+      print(recv);
+    });
   }
 }

@@ -28,10 +28,10 @@ class BluetoothController {
   }
 
   bool _isESP32(BluetoothDevice d) { //TODO: Change to ESP check
-    return (d.name == "ASUS_Z00LD_F");
+    return (d.name == "ESP32test");
   }
 
-  Future<void> connectESP32() async {
+  Future<BluetoothConnection> connectESP32() async {
     print("Starting");
     await _bluetooth.getBondedDevices().then((r) => _devicesList.addAll(r));
     for (BluetoothDevice x in _devicesList){
@@ -39,11 +39,13 @@ class BluetoothController {
         if(x.bondState == BluetoothBondState.bonded || await _bluetooth.bondDeviceAtAddress(x.address)){
           connection = await BluetoothConnection.toAddress(x.address);
           print("Connected to ${x.name}");
-          return;
+          return connection;
         }
       }
     }
-    _bluetooth.startDiscovery().listen((r) async {
+
+    //why is this here? does not seem to be running?
+    /*_bluetooth.startDiscovery().listen((r) async {
       if (_isESP32(r.device)){
         if(r.device.bondState == BluetoothBondState.bonded || await _bluetooth.bondDeviceAtAddress(r.device.address)){
           connection = await BluetoothConnection.toAddress(r.device.address);
@@ -52,7 +54,7 @@ class BluetoothController {
           return;
         }
       }
-    });
+    });*/
   }
 
   //TODO: Call during dispose
