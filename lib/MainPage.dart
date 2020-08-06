@@ -33,7 +33,7 @@ class MainPageState extends State<MainPage> {
               style: Theme.of(context).textTheme.button,
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ConnectBluetooth()));
+              _checkBT();
             },
             color: Colors.blueAccent,
           ),
