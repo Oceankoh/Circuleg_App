@@ -1,7 +1,4 @@
-import 'package:circulegapp/Globals.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
-import 'package:flutter/services.dart';
 
 //Code taken from: https://blog.codemagic.io/creating-iot-based-flutter-app/
 
@@ -63,31 +60,3 @@ class BluetoothController {
     connection = null;
   }
 }
-
-/*
-class BTcontroller{
-  BluetoothState
-  FlutterBlue fblue = FlutterBlue.instance;
-  void test() async{
-    print("BT START");
-    print(await (fblue.isAvailable));
-    fblue.startScan();
-    fblue.scanResults.listen((List<ScanResult> results) {
-     for (ScanResult result in results) {
-        print(result.device.name);
-     }
-   });
-    fblue.connectedDevices.then((list){
-      print("connected: ");
-      print(list);
-    });
-  //TODO follow this tutorial https://medium.com/@pietrowicz.eric/bluetooth-low-energy-development-with-flutter-and-circuitpython-c7a25eafd3cf
-
-  }
-  Future<Point> getValue() async {
-    int timestamp = DateTime.now().millisecondsSinceEpoch;
-    int ir;//read bt
-    return Point(timestamp, ir);
-  }
- }
- */
