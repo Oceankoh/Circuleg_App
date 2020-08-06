@@ -14,7 +14,7 @@ class App extends StatelessWidget {
           subhead: TextStyle(fontSize: 20),
           caption: TextStyle(fontSize: 17,),
           body1: TextStyle(fontSize: 20,),
-          button: TextStyle(fontSize: 17),
+          button: TextStyle(fontSize: 17, color: Colors.white),
         ),
       ),
       home: Splash(),

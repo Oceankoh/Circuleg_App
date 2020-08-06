@@ -5,6 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:circulegapp/Graph.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 
+import 'Bluetooth.dart';
+import 'Globals.dart';
+import 'Globals.dart';
+import 'Globals.dart';
+
 class MainPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => MainPageState();
@@ -17,19 +22,41 @@ class MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Circuleg Mobile Application"),
+      ),
       body: Column(
         children: <Widget>[
-          FlatButton(child:Text("BT CONNECT"),onPressed: ()=>_checkBT(),),
-          Graph(),
-          Center(
+          MaterialButton(
             child: Text(
-              "Blood Flow Level:" + _result,
-              style: Theme.of(context).textTheme.body1,
-              textAlign: TextAlign.center,
+              "Bluetooth Connect",
+              style: Theme.of(context).textTheme.button,
             ),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ConnectBluetooth()));
+            },
+            color: Colors.blueAccent,
+          ),
+          Graph(),
+          Row(
+            children: <Widget>[
+              Center(
+                child: Text(
+                  "Blood Flow Level: ",
+                  style: Theme.of(context).textTheme.body1,
+                ),
+              ),
+              Center(
+                child: Text(
+                  _result,
+                  style: Theme.of(context).textTheme.body1,
+                ),
+              )
+            ],
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           ),
         ],
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       ),
     );
   }
