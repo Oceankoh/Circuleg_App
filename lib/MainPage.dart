@@ -11,14 +11,14 @@ class MainPage extends StatefulWidget {
 
 class MainPageState extends State<MainPage> {
   String _result = "awating data";
-  BTcontroller _btCtrl = BTcontroller();
+  BluetoothController _btCtrl = BluetoothController();
 
   @override
   Widget build(BuildContext context) {
-    _update();
     return Scaffold(
       body: Column(
         children: <Widget>[
+          FlatButton(child:Text("BT CONNECT"),onPressed: ()=>_checkBT(),),
           Graph(),
           Center(
             child: Text(
@@ -33,12 +33,8 @@ class MainPageState extends State<MainPage> {
     );
   }
 
-  void _update() async {
-//    btCtrl.getValue().then((pt) {
-//      setState(() {
-//        result = pt.infraRed.toString();
-//      });
-//    });
-    _btCtrl.test();
+  void _checkBT() async{
+    _btCtrl.enableBluetooth();
+    _btCtrl.connectESP32();
   }
 }
