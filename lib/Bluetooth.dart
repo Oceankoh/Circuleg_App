@@ -20,31 +20,35 @@ class BluetoothController {
 
   bool get isConnected => connection != null && connection.isConnected;
 
-  Future<void> enableBluetooth() async {
+  Future<bool> enableBluetooth() async {
     if (_bluetoothState == BluetoothState.STATE_OFF)
       return (await _bluetooth.requestEnable());
     else
-      return false;
+      return true;
   }
 
-  bool _isESP32(BluetoothDevice d) {
-    return (d.name == "JON");
+  bool _isESP32(BluetoothDevice d) { //TODO: Change to ESP check
+    return (d.name == "ASUS_Z00LD_F");
   }
 
   Future<void> connectESP32() async {
+    print("Starting");
     await _bluetooth.getBondedDevices().then((r) => _devicesList.addAll(r));
     for (BluetoothDevice x in _devicesList){
       if (_isESP32(x)){
-        if(await _bluetooth.bondDeviceAtAddress(x.address)){
+        if(x.bondState == BluetoothBondState.bonded || await _bluetooth.bondDeviceAtAddress(x.address)){
           connection = await BluetoothConnection.toAddress(x.address);
+          print("Connected to ${x.name}");
           return;
         }
       }
     }
     _bluetooth.startDiscovery().listen((r) async {
       if (_isESP32(r.device)){
-        if(await _bluetooth.bondDeviceAtAddress(r.device.address)){
+        if(r.device.bondState == BluetoothBondState.bonded || await _bluetooth.bondDeviceAtAddress(r.device.address)){
           connection = await BluetoothConnection.toAddress(r.device.address);
+          print("Connected to ${r.device.name}");
+          _bluetooth.cancelDiscovery();
           return;
         }
       }
