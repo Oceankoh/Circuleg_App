@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:circulegapp/Globals.dart';
 import 'package:flutter/material.dart';
 import 'package:animator/animator.dart';
+import 'package:flutter/widgets.dart';
 import 'dart:math';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -65,7 +66,7 @@ class LoadAnimation extends StatelessWidget {
       ),
       Text(
         'Loading',
-        style: TextStyle(fontSize: 30, color: Theme.of(context).primaryColor),
+        style: TextStyle(fontSize: 30, color: Theme.of(context).primaryColor, fontWeight: FontWeight.bold),
       ),
     ], mainAxisAlignment: MainAxisAlignment.center)));
   }
