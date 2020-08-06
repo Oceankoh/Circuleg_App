@@ -15,8 +15,7 @@ class Splash extends StatefulWidget {
 
 class SplashState extends State<Splash> {
   initSharedPreferences() async {
-    SharedPreferences.getInstance().then((prefs) {
-    });
+    SharedPreferences.getInstance().then((prefs) {});
   }
 
   @override
@@ -25,9 +24,7 @@ class SplashState extends State<Splash> {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     initSharedPreferences();
     Future.delayed(Duration(seconds: 3), () {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => MainPage()));
-
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainPage()));
     });
   }
 
@@ -47,28 +44,29 @@ class LoadAnimation extends StatelessWidget {
     return Container(
         child: Center(
             child: Column(children: [
-              Container(
-                child: Animator(
-                  tween: Tween<double>(begin: 0, end: 2 * pi),
-                  duration: Duration(seconds: 2),
-                  repeats: 0,
-                  curve: Curves.easeInOutQuart,
-                  builder: (anim) =>
-                      Transform.rotate(
-                        angle: anim.value,
-                        child: Padding(
-                          padding: EdgeInsets.all(20),
-                          child: Icon(Icons.sync, size: 50),
-                        ),
-                      ),
-                ),
+      Container(
+        child: Animator(
+          tween: Tween<double>(begin: 0, end: 2 * pi),
+          duration: Duration(seconds: 2),
+          repeats: 0,
+          curve: Curves.easeInOutQuart,
+          builder: (anim) => Transform.rotate(
+            angle: anim.value,
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child: Transform(
+                alignment: Alignment.center,
+                transform: Matrix4.rotationY(pi),
+                child: Icon(Icons.sync, size: 50),
               ),
-              Text(
-                'Loading',
-                style: TextStyle(fontSize: 30, color: Theme
-                    .of(context)
-                    .primaryColor),
-              ),
-            ], mainAxisAlignment: MainAxisAlignment.center)));
+            ),
+          ),
+        ),
+      ),
+      Text(
+        'Loading',
+        style: TextStyle(fontSize: 30, color: Theme.of(context).primaryColor),
+      ),
+    ], mainAxisAlignment: MainAxisAlignment.center)));
   }
 }
