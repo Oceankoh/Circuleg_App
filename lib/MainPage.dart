@@ -16,14 +16,14 @@ class MainPage extends StatefulWidget {
 }
 
 class MainPageState extends State<MainPage> {
-  String _result = "awating data";
+  String _result = "Awaiting data";
   BluetoothController _btCtrl = BluetoothController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Circuleg Mobile Application"),
+        title: Text("CircuLeg Mobile Application"),
       ),
       body: Column(
         children: <Widget>[
@@ -61,12 +61,18 @@ class MainPageState extends State<MainPage> {
     );
   }
 
-  void _checkBT() async{
+  void _checkBT() async {
     _btCtrl.enableBluetooth();
-    BluetoothConnection btConn= await _btCtrl.connectESP32();
-    btConn.input.listen((data){
-      String recv = String.fromCharCodes(data);
-      print(recv);
+    BluetoothConnection btConn = await _btCtrl.connectESP32();
+    btConn.input.listen((data) {
+      String received = String.fromCharCodes(data);
+      print(received);
+      // if input is a number
+      if (double.tryParse(received) != null) {
+        setState(() {
+          _result = received;
+        });
+      }
     });
   }
 }
