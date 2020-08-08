@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:circulegapp/Graph.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 
 import 'Bluetooth.dart';
 import 'Globals.dart';
@@ -21,9 +22,15 @@ class MainPageState extends State<MainPage> {
   String _result = "Awaiting data";
   String _connectionStatus = "Not Connected";
   BluetoothController _btCtrl = BluetoothController();
+  ProgressDialog pr;
 
   @override
   Widget build(BuildContext context) {
+    pr = ProgressDialog(context, isDismissible: false);
+    pr.style(
+      message: "Connecting to Device...",
+      borderRadius: 10,
+    );
     return Scaffold(
       appBar: AppBar(
         title: Text("CircuLeg Mobile Application"),
@@ -39,7 +46,7 @@ class MainPageState extends State<MainPage> {
                     style: Theme.of(context).textTheme.body1,
                   ),
                 ),
-                padding: EdgeInsets.all(DeviceSpecs.screenHeight*0.02),
+                padding: EdgeInsets.all(DeviceSpecs.screenHeight * 0.02),
               ),
               MaterialButton(
                 child: Text(
@@ -78,8 +85,10 @@ class MainPageState extends State<MainPage> {
 
   void _checkBT() async {
     _btCtrl.enableBluetooth();
+    pr.show();
     BluetoothConnection btConn = await _btCtrl.connectESP32();
     btConn.input.listen((data) {
+      pr.hide();
       setState(() => _connectionStatus = "Connected");
       String received = String.fromCharCodes(data);
       print(received);
