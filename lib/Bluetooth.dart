@@ -28,6 +28,7 @@ class BluetoothController {
     return (d.name == "ESP32test");
   }
 
+  // ignore: missing_return
   Future<BluetoothConnection> connectESP32() async {
     print("Starting");
     await _bluetooth.getBondedDevices().then((r) => _devicesList.addAll(r));
@@ -40,7 +41,8 @@ class BluetoothController {
         }
       }
     }
-
+    // should wait forever until connected hence ignore missing return
+    // ignore: missing_return
     _bluetooth.startDiscovery().listen((r) async {
       if (_isESP32(r.device)){
         if(r.device.bondState == BluetoothBondState.bonded || await _bluetooth.bondDeviceAtAddress(r.device.address)){
