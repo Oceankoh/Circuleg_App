@@ -79,8 +79,8 @@ class MainPageState extends State<MainPage> {
   void _checkBT() async {
     _btCtrl.enableBluetooth();
     BluetoothConnection btConn = await _btCtrl.connectESP32();
-    setState(() => _connectionStatus = "Connected");
     btConn.input.listen((data) {
+      setState(() => _connectionStatus = "Connected");
       String received = String.fromCharCodes(data);
       print(received);
       // if input is a number
