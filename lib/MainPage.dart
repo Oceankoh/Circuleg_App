@@ -19,6 +19,7 @@ class MainPage extends StatefulWidget {
 class MainPageState extends State<MainPage> {
   Firestore _db = Firestore.instance;
   String _result = "Awaiting data";
+  String _connectionStatus = "Not Connected";
   BluetoothController _btCtrl = BluetoothController();
 
   @override
@@ -29,15 +30,27 @@ class MainPageState extends State<MainPage> {
       ),
       body: Column(
         children: <Widget>[
-          MaterialButton(
-            child: Text(
-              "Bluetooth Connect",
-              style: Theme.of(context).textTheme.button,
-            ),
-            onPressed: () {
-              _checkBT();
-            },
-            color: Colors.blueAccent,
+          Column(
+            children: <Widget>[
+              Padding(
+                child: Center(
+                  child: Text(
+                    "Bluetooth Status: $_connectionStatus",
+                    style: Theme.of(context).textTheme.body1,
+                  ),
+                ),
+                padding: EdgeInsets.all(DeviceSpecs.screenHeight*0.02),
+              ),
+              MaterialButton(
+                child: Text(
+                  "Connect",
+                  style: Theme.of(context).textTheme.button,
+                ),
+                onPressed: (_connectionStatus == "Not Connected") ? () => _checkBT() : null,
+                color: Colors.blueAccent,
+                disabledColor: Colors.grey,
+              ),
+            ],
           ),
           Graph(),
           Row(
@@ -71,9 +84,15 @@ class MainPageState extends State<MainPage> {
       print(received);
       // if input is a number
       if (int.tryParse(received) != null) {
-        setState(() => _result = received);  
-        DateTime _now = DateTime.now();      
-        _db.collection("T0000000A").document("${_now.year}-${_now.month}-${_now.day}-${_now.hour}").setData({"dt":_now,"a":{"${_now.millisecondsSinceEpoch}":int.parse(_result)}},merge:true);
+        setState(() => _result = received);
+        DateTime _now = DateTime.now();
+        _db
+            .collection("T0000000A")
+            .document("${_now.year}-${_now.month}-${_now.day}-${_now.hour}")
+            .setData({
+          "dt": _now,
+          "a": {"${_now.millisecondsSinceEpoch}": int.parse(_result)}
+        }, merge: true);
       }
     });
   }
